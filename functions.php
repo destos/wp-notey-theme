@@ -5,6 +5,10 @@
 // Ver: 0.1
 //
 
+##
+##	Main theme ini class
+##
+
 class Theme{
 	
 	var $theme_name = 'notey';
@@ -16,10 +20,16 @@ class Theme{
 	function __construct(){
 		//print_r ( pathinfo(__FILE__) );
 			
-		add_action( 'after_setup_theme',		array( &$this , 'theme_init' ) );
-		add_action( 'init',									array( &$this , 'widget_sidebars' ) );
-		add_action( 'widgets_init',					array( &$this , 'widgets_init' ) );
-	
+		add_action( 'after_setup_theme',				array( &$this , 'theme_init' ) );
+		add_action( 'init',											array( &$this , 'widget_sidebars' ) );
+		add_action( 'widgets_init',							array( &$this , 'widgets_init' ) );
+																						
+		//
+		// template helpers
+		//																	
+		add_filter( 'excerpt_more',							array( tmpl, 'excerpt_more' ) );
+		add_filter( 'the_content_more_link',		array( tmpl, 'excerpt_more' ) );
+		add_filter( 'excerpt_length',						array( tmpl, 'excerpt_length' ) );
 	}
 	
 	
@@ -38,14 +48,11 @@ class Theme{
 		//
 		// Theme Supports
 		//
-		add_theme_support(
-			'post-thumbnails',
-			'automatic-feed-links',
-			'nav-menus'
-		);
+		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'automatic-feed-links' );
+		add_theme_support( 'nav-menus' );
 		
-		add_editor_style();
-		
+		add_editor_style( 'css/editor-style.css');
 		
 		//
 		// Set thumbnail sizes
@@ -92,8 +99,8 @@ class Theme{
 		
 		// loop through all the sidebars
 		foreach( $sidebars as $bar ){
-			if( is_array($bar) )
-				register_sidebar( array_merge( $bar, $defaults ) );
+			if( is_array( $bar ) )
+				register_sidebar( array_merge( $bar, $defaults ) ); // TODO use wordpress's built in merge.
 		}
 		
 	}
@@ -104,6 +111,63 @@ class Theme{
 	function widgets_init(){ #action widgets_init
 		// look up widgets directory and auto load files
 		
+	}
+	
+	
+	// --------------------------------------------------------
+	// 
+	//
+	
+	
+}
+
+
+##
+## Main template helper class
+##
+class tmpl{
+	
+	// --------------------------------------------------------
+	// nice title
+	//
+	
+	static function title(){
+
+    if ( is_single() ) {
+			single_post_title(); echo ' | '; bloginfo( 'name' );
+		} elseif ( is_home() || is_front_page() ) {
+			bloginfo( 'name' ); echo ' | '; bloginfo( 'description' ); self::get_page_number();
+		} elseif ( is_page() ) {
+			single_post_title( '' ); echo ' | '; bloginfo( 'name' );
+		} elseif ( is_search() ) {
+			printf( __( 'Search results for "%s"', 'theme' ), esc_html( $s ) ); self::get_page_number(); echo ' | '; bloginfo( 'name' );
+		} elseif ( is_404() ) {
+			_e( 'Not Found', 'theme' ); echo ' | '; bloginfo( 'name' );
+		} else {
+			wp_title( '' ); echo ' | '; bloginfo( 'name' ); self::get_page_number();
+		}
+		
+	}
+	
+	// Get the page number
+	static function get_page_number() {
+		if ( get_query_var( 'paged' ) )
+			return ' | ' . __( 'Page ' , 'pat_theme' ) . get_query_var( 'paged' );
+	}
+	
+	// Echo the page number
+	static function the_page_number() {
+		echo tmpl::get_page_number();
+	}
+	
+	// Control excerpt length
+	static function excerpt_length( $length ) {
+		return 40;
+	}	
+	
+	// Make a nice read more link on excerpts
+	static function excerpt_more( $more ) {
+		return '&hellip; <a href="'. get_permalink() . '">' . __('Continue&nbsp;reading&nbsp;<span class="meta-nav">&rarr;</span>', 'theme') . '</a>';
 	}
 	
 }
