@@ -1,5 +1,5 @@
 
-<div id="footer">
+<footer>
 
 	<p>
 	&copy; Patrick Forringer | <?php bloginfo('name'); ?> is proudly powered by	<a href="http://wordpress.org/">WordPress</a>
@@ -8,9 +8,11 @@
 		and <a href="<?php bloginfo('comments_rss2_url'); ?>">Comments (RSS)</a>.
 		<?php echo get_num_queries(); ?> queries. <?php timer_stop(1); ?> seconds.
 -->
-		
 	</p>
-</div>
-		<?php wp_footer(); ?>
+	
+<?php wp_footer(); ?>
+
+</footer>
+
 </body>
 </html>
