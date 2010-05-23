@@ -31,6 +31,8 @@ class Theme{
 		add_filter( 'the_content_more_link',		array( tmpl, 'excerpt_more' ) );
 		add_filter( 'excerpt_length',						array( tmpl, 'excerpt_length' ) );
 		
+		
+		add_action( 'wp_head',									array( &$this , 'wp_head' ) );
 	}
 	
 	
@@ -41,9 +43,10 @@ class Theme{
 	function theme_init(){ #action after_setup_theme
 	
 		//
-		// Include theme functions
+		// Include theme functions #require_once('functions/func.php');
 		//
-		#require_once('functions/func.php');
+		require_once('functions/latest_jquery.php');
+		
 		//require_once('functions/shortlink.php');
 		//new shortlink;
 		
@@ -74,7 +77,49 @@ class Theme{
 		if ( is_readable( $locale_file ) )
 			require_once( $locale_file );
 			
+		//
+		// Define theme scripts and extra styles
+		
+		//
+		// fancybox scripts
+		// 
+		wp_register_script( 'jquery.fancybox',
+		get_bloginfo('template_directory') . '/js/lib/fancybox/jquery.fancybox-1.3.1.pack.js',
+		array('jquery','jquery.mousewheel','jquery.easing'), '1.3.1');
+			
+			wp_register_style( 'css.fancybox',
+			get_bloginfo('template_directory') . '/css/jquery.fancybox-1.3.1.css',
+			array(), '1.3.1', 'screen' );
+		
+			wp_register_script( 'jquery.mousewheel',
+			get_bloginfo('template_directory') . '/js/lib/fancybox/jquery.mousewheel-3.0.2.pack.js',
+			array('jquery'), '3.0.2');
+			
+			wp_register_script( 'jquery.easing',
+			get_bloginfo('template_directory') . '/js/lib/fancybox/jquery.easing-1.3.pack.js',
+			array('jquery'), '1.3');
+		
+		// main theme js functionality file
+		wp_register_script( 'theme_func',
+		get_bloginfo('template_directory') . '/js/theme_functionality.js',
+		array( 'jquery', 'jquery.fancybox' ), '0.2');
+		
+		wp_enqueue_script( 'theme_func' );
+		wp_enqueue_style( 'css.fancybox' );
 	}
+	
+	// --------------------------------------------------------
+	// 
+	//
+	
+	function wp_head(){ #action wp_head
+		
+		//upgrade_jquery( '1.4.2', false, true );
+		
+		//wp_enqueue_script( 'theme_func' );
+		//wp_enqueue_style( 'css.fancybox' );
+	}
+	
 	
 	
 	// --------------------------------------------------------
@@ -103,7 +148,7 @@ class Theme{
 		// loop through all the sidebars
 		foreach( $sidebars as $bar ){
 			if( is_array( $bar ) )
-				register_sidebar( array_merge( $bar, $defaults ) ); // TODO use wordpress's built in merge.
+				register_sidebar( array_merge( $bar, $defaults ) ); // TODO use wordpress's built in arg merger merge.
 		}
 		
 	}

@@ -116,12 +116,32 @@ input, select {
 
 
 html{
-	background: url(img/bg_top.gif) repeat-x,
-	url(img/bg_rep.gif) repeat;	
+	background: url(img/bg_top.gif) repeat-x 0 60px, url(img/bg_rep.gif) repeat;	
 }
 
 body{
-	border-top: 1px solid #747880;
+	margin-top: 80px;
+}
+
+body > header{
+	background: #2f2e34 url(img/header_grad_colors.png) repeat-x left 0;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+body > header section{
+	height: 60px;
+	display: block;
+	width: 100%;
+	background: transparent url(img/header_border_colors.png) repeat-x left bottom;
+}
+body > header nav{
+	display: none;
+}
+
+body > header hgroup{
+	display: none;
 }
 
 /* @group Basic WordPress Blog Styles */

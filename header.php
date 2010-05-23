@@ -21,7 +21,6 @@
 <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-
 <?php wp_head() ?>
 
 </head>
@@ -29,6 +28,7 @@
 <body <?php body_class() ?>>
 	
 	<header>
+		<section>
 		<hgroup>
 			<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 			<h4><?php bloginfo( 'description' ); ?></h4>
@@ -50,4 +50,5 @@
 			'walker' => '',
 			'context' => 'frontend'
 		) ); ?>
+		</section>
 	</header>

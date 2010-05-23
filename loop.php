@@ -8,7 +8,9 @@
 		</header>
 		<section class="entry">
 			<p><?php _e( 'Apologies, but no results were found for the requested Archive. Perhaps searching will help find a related post.', 'notey' ); ?></p>
-			<?php get_search_form(); ?>
+			
+			<?php get_template_part('search-page', 'index'); ?>
+			
 		</section><!-- .entry-content -->
 	</article><!-- #post-0 -->
 <?php endif; ?>
