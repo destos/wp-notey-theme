@@ -28,7 +28,16 @@ jQuery(document).ready(function($) {
 	});
 	
 	// top bar
-	$('body > header > section').topbar( { extra: 'test', debug: true } );
+	$('body > header > section').topbar({
+		extra: 'test',
+		debug: true,
+		collapsefn: function( obj, tb ){
+			tb.debug('collapsing done', obj );
+		},
+		expandfn: function( obj, tb ){
+			tb.debug('expand done', obj );
+		}
+	});
 	
 });
 
@@ -63,30 +72,50 @@ jQuery(document).ready(function($) {
 	$.extend( tb, debug_obj, {
 		
 		options: {
-			debug: true
+			debug: true,
+			speed: 500,
+			easing: 'swing',
+			expandfn: function(){},
+			collapsefn: function(){}
 		},
 		
-		init: function( ) {
+		init: function() {
+		
 			//tb.debug(data);
 			tb.debug('Starting Top Bar stuff');
-			//console.log( test );
-			
+		
 			target = $(this);
-			//
+
 			$( tb.options.s ).hover( tb.expand, tb.collapse );
 		},
 		
 		expand: function(){
+		
 			tb.debug('expanding');
-			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : 140 })
-			.parent().stop().animate({ backgroundPosition : '0 35px' });
+			
+			//tb.debug(tb.options.speed);
+			
+			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : 140 }, tb.options.speed, tb.options.easing )
+			.parent().stop().animate({ backgroundPosition : '0 35px' }, tb.options.speed, tb.options.easing,
+				function(){
+					if( $.isFunction(tb.options.expandfn) ){
+						tb.options.expandfn(this, tb);
+					}
+				}
+			);
 			//.css("background-position", "50% " + offset + "px");
 		},
 		
 		collapse: function(){
 			tb.debug('collapsing');
-			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : 60 })
-			.parent().stop().animate({ backgroundPosition : '0 0px' });
+			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : 60 }, tb.options.speed, tb.options.easing )
+			.parent().stop().animate({ backgroundPosition : '0 0px' }, tb.options.speed, tb.options.easing,
+				function(){
+					if( $.isFunction(tb.options.collapsefn) ){
+						tb.options.collapsefn(this, tb);
+					}
+				}
+			);
 		}
 		
 	});
