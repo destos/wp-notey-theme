@@ -9,6 +9,7 @@ jQuery(document).ready(function($) {
 		'transitionOut'	: 'elastic',
 		'titlePosition'	: 'inside',
 		'hideOnContentClick' : true,
+		'padding'				: 10,
 		'onStart'				: function(selectedArray, selectedIndex, selectedOpts){
 			
 			var $this = $(selectedArray);
@@ -26,12 +27,8 @@ jQuery(document).ready(function($) {
 		}
 	});
 	
-	$('body > header > section').hover(function(){
-		$(this).stop().animate({ 'height' : 140 }).parent().stop().animate({ backgroundPosition : '0 35px' }); //.css("background-position", "50% " + offset + "px");
-
-	},function(){
-		$(this).stop().animate({ 'height' : 60 }).parent().stop().animate({ backgroundPosition : '0 0px' });
-	});
+	// top bar
+	$('body > header > section').topbar( { extra: 'test', debug: true } );
 	
 });
 
@@ -39,11 +36,66 @@ jQuery(document).ready(function($) {
 // Top Menu handler
 //
 
-(function($) {
+(function( $, tb ) {
 	
+	//
+	// Debug Obj I made from stealing things
+	//
+	var debug_obj = {
+		debug: function(s) {
+			if ($.fn.topbar.options.debug)
+				debug_obj.log(s);
+		},
+		log: function(){
+			if (window.console && window.console.log)
+				window.console.log('[topbar] ' + Array.prototype.join.call(arguments,' '));
+		}
+	};
 	
+	tb = $.fn.topbar = function( options ) {
+		$.extend( true, tb.options, { s: this.selector, c: this.context }, options );
+		return this.each( tb.init );
+	};
+	
+	//
+	// Main topbar functionality
+	//
+	$.extend( tb, debug_obj, {
+		
+		options: {
+			debug: true
+		},
+		
+		init: function( ) {
+			//tb.debug(data);
+			tb.debug('Starting Top Bar stuff');
+			//console.log( test );
+			
+			target = $(this);
+			//
+			$( tb.options.s ).hover( tb.expand, tb.collapse );
+		},
+		
+		expand: function(){
+			tb.debug('expanding');
+			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : 140 })
+			.parent().stop().animate({ backgroundPosition : '0 35px' });
+			//.css("background-position", "50% " + offset + "px");
+		},
+		
+		collapse: function(){
+			tb.debug('collapsing');
+			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : 60 })
+			.parent().stop().animate({ backgroundPosition : '0 0px' });
+		}
+		
+	});
 	
 })(jQuery);
+
+// --------------------------------------------------------
+// Background position animator
+//
 
 /**
  * @author Alexander Farkas

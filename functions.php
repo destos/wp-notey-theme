@@ -113,7 +113,7 @@ class Theme{
 	//
 	
 	function wp_head(){ #action wp_head
-		
+		// this didn't work for some reason? TODO fix it.
 		//upgrade_jquery( '1.4.2', false, true );
 		
 		//wp_enqueue_script( 'theme_func' );
@@ -228,7 +228,7 @@ class tmpl{
 		
 		extract( wp_parse_args( $args, $defaults ) );
 		
-		if( $show_author ){
+		if( (bool) $show_author ){
 			printf( __( '<span %1$s>Posted on</span> %2$s by %3$s', 'notey' ),
 				'class=""', // TODO do something with the class
 				self::get_post_time(),
@@ -271,7 +271,7 @@ class tmpl{
 	// Commenting
 	//
 	
-	// Delete comment
+	// Delete/Spam comment
 	static function delete_comment_link($id) {
 	  if (current_user_can('edit_post')) {
 	    echo '<a href="'.admin_url("comment.php?action=cdc&c=$id").'">'.__('Delete', 'theme').'</a> ';

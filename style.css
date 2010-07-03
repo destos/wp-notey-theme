@@ -130,7 +130,7 @@ body > header{
 	top: 0;
 	left: 0;
 }
-body > header section{
+body > header > section{
 	height: 60px;
 	display: block;
 	width: 100%;
@@ -141,7 +141,24 @@ body > header nav{
 }
 
 body > header hgroup{
+	
+}
+
+body > header hgroup h1 a{
+	background: url(img/patrick-s.png) no-repeat left top;
+	width: 84px;
+	display: block;
+	overflow: hidden;
+	text-indent: -40em;
+	height: 25px;
+}
+body > header hgroup h4{
 	display: none;
+}
+
+#container{
+	width: 960px;
+	margin: 0 auto;
 }
 
 /* @group Basic WordPress Blog Styles */

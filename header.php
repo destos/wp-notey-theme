@@ -29,26 +29,28 @@
 	
 	<header>
 		<section>
-		<hgroup>
-			<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
-			<h4><?php bloginfo( 'description' ); ?></h4>
-		</hgroup>
-		<?php wp_nav_menu( array(
-			'slug' => 'main',
-			'sort_column' => 'menu_order',
-			'menu' => 'Top',
-			'container' => 'nav',
-			'container_class' => 'menu-header',
-			'menu_class' => '',
-			'echo' => true,
-			'fallback_cb' => 'wp_page_menu',
-			'before' => '',
-			'after' => '',
-			'link_before' => '', //<span></span>
-			'link_after' => '',
-			'depth' => 0,
-			'walker' => '',
-			'context' => 'frontend'
-		) ); ?>
+			<div id="headwrap">
+			<hgroup>
+				<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+				<h4><?php bloginfo( 'description' ); ?></h4>
+			</hgroup>
+			<?php wp_nav_menu( array(
+				'slug' => 'main',
+				'sort_column' => 'menu_order',
+				'menu' => 'Top',
+				'container' => 'nav',
+				'container_class' => 'menu-header',
+				'menu_class' => '',
+				'echo' => true,
+				'fallback_cb' => 'wp_page_menu',
+				'before' => '',
+				'after' => '',
+				'link_before' => '', //<span></span>
+				'link_after' => '',
+				'depth' => 0,
+				'walker' => '',
+				'context' => 'frontend'
+			) ); ?>
+			</div>
 		</section>
 	</header>
