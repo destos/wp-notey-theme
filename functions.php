@@ -104,20 +104,21 @@ class Theme{
 		get_bloginfo('template_directory') . '/js/theme_functionality.js',
 		array( 'jquery', 'jquery.fancybox' ), '0.2');
 		
-		wp_enqueue_script( 'theme_func' );
-		wp_enqueue_style( 'css.fancybox' );
+		if(!is_admin()){
+			wp_enqueue_script( 'theme_func' );
+			wp_enqueue_style( 'css.fancybox' );	 
+		}
+		
 	}
 	
 	// --------------------------------------------------------
 	// 
 	//
 	
-	function wp_head(){ #action wp_head
-		// this didn't work for some reason? TODO fix it.
-		//upgrade_jquery( '1.4.2', false, true );
+	function wp_head(){
+	
+		echo '<!-- notey theme -->';
 		
-		//wp_enqueue_script( 'theme_func' );
-		//wp_enqueue_style( 'css.fancybox' );
 	}
 	
 	
