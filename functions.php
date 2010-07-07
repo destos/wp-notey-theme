@@ -13,6 +13,8 @@ class Theme{
 	
 	var $theme_name = 'notey';
 	
+	protected $ver = 0.1;
+	
 	// --------------------------------------------------------
 	// Theme startup
 	//
@@ -99,10 +101,15 @@ class Theme{
 			get_bloginfo('template_directory') . '/js/lib/fancybox/jquery.easing-1.3.pack.js',
 			array('jquery'), '1.3');
 		
+		// type kit
+		wp_register_script( 'typekit',
+			'http://use.typekit.com/vrs0cha.js',
+			array(), '0.1');
+		
 		// main theme js functionality file
 		wp_register_script( 'theme_func',
 		get_bloginfo('template_directory') . '/js/theme_functionality.js',
-		array( 'jquery', 'jquery.fancybox' ), '0.2');
+		array( 'jquery', 'jquery.fancybox', 'typekit' ), '0.2');
 		
 		if(!is_admin()){
 			wp_enqueue_script( 'theme_func' );
@@ -116,7 +123,8 @@ class Theme{
 	//
 	
 	function wp_head(){
-	
+		echo '<!-- Type Kit-->'; 
+		echo '<script type="text/javascript">try{Typekit.load();}catch(e){}</script>';
 		echo '<!-- notey theme -->';
 		
 	}
@@ -230,21 +238,21 @@ class tmpl{
 		extract( wp_parse_args( $args, $defaults ) );
 		
 		if( (bool) $show_author ){
-			printf( __( '<span %1$s>Posted on</span> %2$s by %3$s', 'notey' ),
-				'class=""', // TODO do something with the class
+			printf( __( '<span class="%1$s">Posted on %2$s by %3$s</span>', 'notey' ),
+				'posted author', // TODO do something with the class
 				self::get_post_time(),
 				self::get_author()
 			);
 		}else{
-			printf( __( '<span %1$s>Posted on</span> %2$s', 'notey' ),
-				'class=""',
+			printf( __( '<span class="%1$s">Posted on %2$s</span>', 'notey' ),
+				'posted',
 				self::get_post_time()
 			);
 		}
 		//echo get_the_time();
 		
 		if( (bool) $show_modified_date and get_the_modified_date() != get_the_date() ){
-			printf( __( ' <span %1$s>Updated on</span> %2$s', 'notey' ),
+			printf( __( ', <span %1$s>, Updated on %2$s</span>', 'notey' ),
 				'class="updated_time"',
 				get_the_modified_date()
 			);

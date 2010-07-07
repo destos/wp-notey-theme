@@ -121,6 +121,7 @@ html{
 
 body{
 	margin-top: 80px;
+	font-family: "droid-serif-1","droid-serif-2",serif;
 }
 
 body > header{
@@ -141,7 +142,10 @@ body > header nav{
 }
 
 body > header hgroup{
-	
+	float: left;
+	margin: ;
+	margin-top: 16px;
+	margin-left: 20px;
 }
 
 body > header hgroup h1 a{
@@ -152,6 +156,10 @@ body > header hgroup h1 a{
 	text-indent: -40em;
 	height: 25px;
 }
+body > header hgroup h1 a:focus,
+body > header hgroup h1 a:hover{
+	opacity: 0.8;
+}
 body > header hgroup h4{
 	display: none;
 }
@@ -160,6 +168,256 @@ body > header hgroup h4{
 	width: 960px;
 	margin: 0 auto;
 }
+
+#content{
+	float: left;
+	width: 560px;
+}
+
+/* @group Basic Content Styles */
+
+
+/* entry styling */
+
+.post{
+	margin-bottom: 60px;
+}
+
+.post a:link{
+	color: #4fbad6;
+}
+.post a:focus,
+.post a:hover{
+	text-decoration: none;
+}
+.post a.visited{
+	color: #e23789;
+}
+.post .entry{	
+	line-height: 17px;
+	color: #44464a;
+}
+
+.entry{
+	font-size: 14px;
+}
+.entry h1,
+.entry h2,
+.entry h3,
+.entry h4,
+.entry h5{
+	margin-top: 1em;
+	clear: both;
+	font: normal normal 203%/1.2em "etica-display-1","etica-display-2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
+	margin-bottom: 0.2em;
+	font-weight: normal;
+}
+
+.entry p{
+	margin: 0 0 20px 0;
+	line-height: 24px;
+}
+.entry > p{
+
+}
+article.post header h2{
+	font: normal normal 2.5em/1.2em "etica-display-1","etica-display-2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
+	margin-bottom: 10px;
+}
+
+article.post header h2 a:link{
+	text-decoration: none;
+	color: #384356;
+}
+article.post header h2 a:hover{
+	text-decoration: underline;
+}
+
+article.post header div{
+	font-size: 11px;
+	margin-bottom: 10px;
+	line-height: 21px;
+	background-color: rgba(251,252,219,0.31);
+	padding-top: 1px;
+	text-align: right;
+	color: #7e7e7e;
+	padding-right: 10px;
+}
+
+article.post{
+	
+}
+
+/* list items */
+.entry ul{
+	margin: 18px 0;
+	list-style-type: circle;
+	list-style-position: outside;
+}
+.entry ul li{
+	margin: 8px 0;
+}
+
+.entry ol{
+	margin: 18px 0;
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+.entry ol li{
+	margin: 8px 0;
+}
+
+/* Quotes */
+.entry blockquote{
+	background-color: rgba(195,195,195,0.13);
+	overflow: visible;
+	position: relative;
+	margin: 10px -14px;
+		
+	border: 4px solid #fff;
+	
+	box-shadow: 0px 0px 2px #305da2;
+	-moz-box-shadow: 0px 0px 2px #305da2;
+	-webkit-box-shadow: 0px 0px 2px #305da2;
+	padding: 20px 10px 0;
+}
+.entry blockquote p{
+	position: relative;
+	z-index: 500;
+}
+.entry blockquote:before, .entry blockquote:after {
+	font-size: 13em;
+	position: absolute;
+	color: #dee0e0;
+	line-height: 96px;
+	z-index: 10;
+}
+.entry blockquote:before{
+	content: '“';
+	left: 9px;
+	top: 0.18em;
+}
+.entry blockquote:after{
+	content: '”';
+	right: 12px;
+	bottom: -0.38em;
+}
+
+/* @group Pullquotes */
+
+blockquote.left,
+blockquote.right{
+	border: none;
+	box-shadown: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	background-color: transparent;
+	padding: 0;
+	font-size: 17px;
+	color: #e7460e;
+	width: 40%;
+}
+blockquote.left p,
+blockquote.right p{
+	margin-bottom: 0;
+	line-height: 24px;
+}
+blockquote.left {
+	float: left;
+	margin-left: -20px;
+	margin-right: 20px;
+	text-align: right;
+}
+blockquote.right {
+	float: right;
+	margin-left: 20px;
+	margin-right: -20px;
+	text-align: left;
+}
+.entry blockquote.left:before,
+.entry blockquote.right:before{
+	content: '“';
+	left: -0.10em;
+	top: 0.1em;
+}
+.entry blockquote.left:after,
+.entry blockquote.right:after{
+	content: '”';
+	bottom: -0.45em;
+	right: -20px;
+}
+
+/* @end */
+
+/* Attached image */
+.entry img{
+	border: 0;	
+}
+
+.entry div.wp-caption{
+	padding: 5px 5px 0;
+	background-color: rgba(255,254,255,0.27);
+	width: auto !important;
+	margin-top: 8px;
+	text-align: center;
+	color: #474747;
+	line-height: 30px;
+	
+	/* please don't send me emails about this >:F */
+	/*border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;*/
+		
+	border: 1px solid #cacaca;
+	font-size: 80%;
+}
+.entry div.wp-caption img{
+	/* please don't send me emails about this >:F */
+	/*border-radius: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;*/	
+}
+.entry div.wp-caption a{
+	display: block;
+	line-height: 0;
+}
+
+.entry div.wp-caption.alignright{
+	margin-right: -6px;
+	margin-left: 10px;
+}
+.entry div.wp-caption.alignleft{
+	margin-right: 10px;
+	margin-left: -76px;
+}
+
+.entry .alignleft{
+	float: left;
+	display: block;
+}
+.entry .alignright{
+	float: right;
+	display: block;
+}
+
+.entry dl.alignleft{
+	float: left;
+	text-align: center;
+}
+
+.entry img.aligncenter{
+	margin: 0 auto;
+	display: block;
+}
+
+.entry img.alignleft{
+	margin: 4px 10px 4px 0;
+}
+.entry img.alignright{
+	margin: 4px 0 4px 10px;
+}
+
+/* @end */
 
 /* @group Basic WordPress Blog Styles */
 
@@ -212,23 +470,9 @@ img.aligncenter {
 
 /* @end */
 
-/* @group Pullquotes */
-
-blockquote.left {
-	float: left;
-	margin-left: 0;
-	margin-right: 20px;
-	text-align: right;
-	width: 33%;
-}
-blockquote.right {
-	float: right;
-	margin-left: 20px;
-	margin-right: 0;
-	text-align: left;
-	width: 33%;
-}
 
 /* @end */
 
-/* @end */
+footer{
+	clear: both;
+}
