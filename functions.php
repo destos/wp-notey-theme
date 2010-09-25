@@ -11,7 +11,7 @@
 
 class Theme{
 	
-	var $theme_name = 'notey';
+	static $name = 'notey';
 	
 	protected $ver = 0.1;
 	
@@ -178,6 +178,86 @@ class Theme{
 	
 }
 
+class top{
+	
+	static function archives( $args = array() ){
+	
+		global $wpdb, $wp_locale;
+		
+		$defaults = array(
+			'limit' => false,
+			'echo' => 1,
+			'before_year' => '<dl>',
+			'after_year' => '</dl>',
+			'before_year_title' => '<dt>',
+			'after_year_title' => '</dt>',
+			'before_month' => '<dd>',
+			'after_month' => '</dd>',
+			/*
+'before_post' => '',
+			'after_post' => '',
+*/
+			
+		);
+		
+		if ( !empty($limit) )
+			$limit = ' LIMIT '.absint($limit);
+	
+		$r = wp_parse_args( $args, $defaults );
+		extract( $r, EXTR_SKIP );
+		
+		$where = apply_filters('getarchives_where', "WHERE post_type = 'post' AND post_status = 'publish'", $r );
+		
+		$query = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, DAYOFMONTH(post_date) AS `day`, ID, post_title AS 'title' FROM $wpdb->posts $where ORDER BY post_date DESC $limit";
+		
+		// See if we have the query cached
+		$key = md5($query);
+		$cache = wp_cache_get( 'wp_get_archives' , 'general');
+		if ( !isset( $cache[ $key ] ) ) {
+			$arcresults = $wpdb->get_results($query);
+			$cache[ $key ] = $arcresults;
+			wp_cache_set( 'wp_get_archives', $cache, 'general' );
+		} else {
+			$arcresults = $cache[ $key ];
+		}
+
+			
+		if ( $arcresults ) {
+			$yearly = array();
+			
+			// place in organized array
+			foreach ( (array) $arcresults as $arcresult ) {
+				$yearly[$arcresult->year][$arcresult->month][$arcresult->day] = array( 'id' => $arcresult->ID, 'title' => $arcresult->title );	
+			}
+			
+			unset($arcresults);
+			
+			$o = '';
+			
+			//Yearly Loop
+			foreach( $yearly as $year => $monthly ){
+				$o .= $before_year;
+					
+				$o .= $before_year_title.$year.$after_year_title;
+				foreach( $monthly as $month => $posts ){
+					$o .= $before_month.'<strong>'.$wp_locale->get_month($month).'</strong>';
+					$o .= '<ul class="">';
+					foreach( $posts as $day => $post ){
+						$o .= get_archives_link(get_permalink($post['ID']), $post['title'] ,'html', '<span>'.$day.'</span>');
+					}
+											
+					$o .= '</ul>';
+					$o .= $after_month;
+				}
+				// Monthly Loop
+				$o .= $after_year;
+			}
+			
+			echo $o;
+			
+	}
+	
+}
 
 ##
 ## Main template helper class

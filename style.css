@@ -1,5 +1,6 @@
 /* @override 
 	http://destos.homeip.net/pat/wp/wp-content/themes/notey/style.css
+	http://pat.dev/wp/wp-content/themes/notey/style.css
 */
 
 /*   
@@ -116,7 +117,7 @@ input, select {
 
 
 html{
-	background: url(img/bg_top.gif) repeat-x fixed 0 60px, url(img/bg_rep.gif) repeat fixed;	
+	background: url(img/bg_top.gif) repeat-x scroll 0 61px, url(img/bg_rep.gif) repeat fixed;	
 }
 
 body{
@@ -126,16 +127,20 @@ body{
 
 body > header{
 	background: #2f2e34 url(img/header_grad_colors.png) repeat-x left 0;
-	position: fixed;
+	position: absolute;
 	width: 100%;
+	min-width: 960px;
 	top: 0;
 	left: 0;
+	overflow: hidden;
+	border-bottom: 1px solid #fff;
 }
 body > header > section{
 	height: 60px;
 	display: block;
 	width: 100%;
 	background: transparent url(img/header_border_colors.png) repeat-x left bottom;
+	min-width: 960px;
 }
 body > header nav{
 	display: none;
@@ -173,6 +178,76 @@ section#content{
 	float: left;
 	width: 560px;
 }
+
+/* @group Archives */
+
+#archives{
+	position: absolute;
+	left: 180px;
+	width: 5000px;
+}
+
+#archives dl{
+	float: left;
+	width: 260px;
+	padding-top: 20px;
+	padding-right: 40px;
+}
+
+#archives dl dt{
+	color: #fff;
+	font: normal normal 24px/21px HelveticaNeue-Light, "Helvetica Neue Light", Helvetica;
+	/*text-align: right;*/
+	border-bottom: 2px solid rgba(255,254,255,0.4);
+	padding-bottom: 5px;
+}
+
+#archives dl dd{
+	margin-top: 10px;
+}
+
+#archives dl dd strong{
+	display: block;
+	color: #fff;
+	line-height: 21px;
+	/*text-align: right;*/
+	border-bottom: 1px solid rgba(255,254,255,0.2);
+	font-size: 14px;
+
+}
+
+#archives dl dd ul{
+	list-style: none;
+	margin-bottom: 15px;
+	color: #fff;
+	list-style-position: outside;
+	opacity: 1;
+}
+
+#archives dl dd ul li{
+	margin: 6px 0;
+	padding-left: 0;
+	position: relative;
+	line-height: 1.3em;
+	font-size: 80%;
+}
+
+#archives dl dd ul li span{
+	display: block;
+	position: absolute;
+	width: 20px;
+	left: -30px;
+	text-align: right;
+	color: rgba(255,254,255,0.77);
+}
+
+#archives dl dd ul li a{
+	color: #b7daff;
+}
+
+/* @end */
+
+
 
 /* @group Basic Content Styles */
 

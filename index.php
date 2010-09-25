@@ -2,7 +2,6 @@
 
 		<div id="container">
 			<section id="content">
-
 			<?php
 			 get_template_part( 'loop', 'index' );
 			?>

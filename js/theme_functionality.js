@@ -44,6 +44,7 @@ jQuery(document).ready(function($) {
 // --------------------------------------------------------
 // Top Menu handler
 //
+// TODO: when scrolling up and menu is open push up menu as its probably not needed.
 
 (function( $, tb ) {
 	
@@ -69,6 +70,12 @@ jQuery(document).ready(function($) {
 	//
 	// Main topbar functionality
 	//
+	
+	/*
+	Has to be able to set the height via a attached click event on any object.
+	handle binding to menu items and their coresponding revealed div, handle navigating revealed area.
+	
+	*/
 	$.extend( tb, debug_obj, {
 		
 		options: {
@@ -79,14 +86,24 @@ jQuery(document).ready(function($) {
 			collapsefn: function(){}
 		},
 		
+		//debug : function(s){}, // empty debug method
+		
 		init: function() {
 		
 			//tb.debug(data);
 			tb.debug('Starting Top Bar stuff');
 		
-			target = $(this);
+			//target = $(this);
 
-			$( tb.options.s ).hover( tb.expand, tb.collapse );
+			//$( tb.options.s ).hover( tb.expand, tb.collapse );
+			//tb.moveto( 900 );
+			
+			$('body').click(function(e){
+				//$(this)
+				
+				tb.moveto( e.pageY );
+			});
+			
 		},
 		
 		expand: function(){
@@ -95,8 +112,8 @@ jQuery(document).ready(function($) {
 			
 			//tb.debug(tb.options.speed);
 			
-			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : 140 }, tb.options.speed, tb.options.easing )
-			.parent().stop().animate({ backgroundPosition : '0 35px' }, tb.options.speed, tb.options.easing,
+			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : 540 }, tb.options.speed, tb.options.easing )
+			.parent().stop().animate({ backgroundPosition : '0 125px' }, tb.options.speed, tb.options.easing,
 				function(){
 					if( $.isFunction(tb.options.expandfn) ){
 						tb.options.expandfn(this, tb);
@@ -116,6 +133,39 @@ jQuery(document).ready(function($) {
 					}
 				}
 			);
+		},
+		
+		moveto: function( h, callback ){
+				
+			if (h < 60 || typeof h !== 'number' )
+				h = 60;
+				
+			tb.debug('moving to '+ h+'px');
+			
+			// DUN WERK! FIX THIS shiz
+			var point = 140;
+			var max_diff = 104;
+			
+			bgh = ( h < point )? Math.round((h*max_diff)/point-45) : h - max_diff;
+			
+			tb.debug('bg moving to '+ bgh+'px');
+			/*
+if( h > 140 ){
+				bgh = 35;
+			}else{
+				bgh = (35*60)/h;
+			}
+*/
+			
+			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : h }, tb.options.speed, tb.options.easing )
+			.parent().stop().animate({ backgroundPosition : '0 '+bgh+'px' }, tb.options.speed, tb.options.easing,
+				function(){
+					if( $.isFunction( callback ) ){
+					 callback(this, tb);
+					}
+				}
+			);
+
 		}
 		
 	});

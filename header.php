@@ -34,7 +34,11 @@
 				<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 				<h4><?php bloginfo( 'description' ); ?></h4>
 			</hgroup>
-			<?php wp_nav_menu( array(
+			<div id="archives">
+			<?php top::archives(); ?>
+			</div>
+			<?php /*
+wp_nav_menu( array(
 				'slug' => 'main',
 				'sort_column' => 'menu_order',
 				'menu' => 'Top',
@@ -50,7 +54,8 @@
 				'depth' => 0,
 				'walker' => '',
 				'context' => 'frontend'
-			) ); ?>
+			) ); 
+*/?>
 			</div>
 		</section>
 	</header>
