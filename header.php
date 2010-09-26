@@ -29,13 +29,13 @@
 	
 	<header>
 		<section>
-			<div id="headwrap">
+			<div id="headwrap" class="wrap">
 			<hgroup>
 				<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 				<h4><?php bloginfo( 'description' ); ?></h4>
 			</hgroup>
 			<div id="archives">
-			<?php top::archives(); ?>
+			<?php //top::archives(); ?>
 			</div>
 			<?php /*
 wp_nav_menu( array(

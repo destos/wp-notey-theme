@@ -39,6 +39,10 @@ jQuery(document).ready(function($) {
 		}
 	});
 	
+	$('body > header').click(function(){
+		$('body').toggleClass('grid');
+	})
+	
 });
 
 // --------------------------------------------------------
@@ -98,11 +102,13 @@ jQuery(document).ready(function($) {
 			//$( tb.options.s ).hover( tb.expand, tb.collapse );
 			//tb.moveto( 900 );
 			
-			$('body').click(function(e){
+			/*
+$('body').click(function(e){
 				//$(this)
 				
 				tb.moveto( e.pageY );
 			});
+*/
 			
 		},
 		
@@ -113,7 +119,7 @@ jQuery(document).ready(function($) {
 			//tb.debug(tb.options.speed);
 			
 			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : 540 }, tb.options.speed, tb.options.easing )
-			.parent().stop().animate({ backgroundPosition : '0 125px' }, tb.options.speed, tb.options.easing,
+			.parent().stop().animate({ backgroundPosition : 'center 125px' }, tb.options.speed, tb.options.easing,
 				function(){
 					if( $.isFunction(tb.options.expandfn) ){
 						tb.options.expandfn(this, tb);
@@ -126,7 +132,7 @@ jQuery(document).ready(function($) {
 		collapse: function(){
 			tb.debug('collapsing');
 			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : 60 }, tb.options.speed, tb.options.easing )
-			.parent().stop().animate({ backgroundPosition : '0 0px' }, tb.options.speed, tb.options.easing,
+			.parent().stop().animate({ backgroundPosition : 'center 0px' }, tb.options.speed, tb.options.easing,
 				function(){
 					if( $.isFunction(tb.options.collapsefn) ){
 						tb.options.collapsefn(this, tb);
@@ -157,14 +163,16 @@ if( h > 140 ){
 			}
 */
 			
-			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : h }, tb.options.speed, tb.options.easing )
-			.parent().stop().animate({ backgroundPosition : '0 '+bgh+'px' }, tb.options.speed, tb.options.easing,
+			$( tb.options.s, tb.options.c ).stop().animate({ 'height' : h }, tb.options.speed, tb.options.easing );
+			/*
+.parent().stop().animate({ backgroundPosition : 'center '+bgh+'px' }, tb.options.speed, tb.options.easing,
 				function(){
 					if( $.isFunction( callback ) ){
 					 callback(this, tb);
 					}
 				}
 			);
+*/
 
 		}
 		
