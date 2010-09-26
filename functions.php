@@ -52,6 +52,9 @@ class Theme{
 		//require_once('functions/shortlink.php');
 		//new shortlink;
 		
+		// Editor styles
+		add_editor_style();
+		
 		//
 		// Theme Supports
 		//
