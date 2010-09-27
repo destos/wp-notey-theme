@@ -1,4 +1,4 @@
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'full' ); ?>>
 		
 		<header>
 			<h2><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'notey' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
@@ -10,7 +10,8 @@
 			<?php the_content(); ?>
 		</section><!-- .entry -->
 		
-		<?php if(is_single()){ ?>		
+		<?php if(is_single()){ ?>
+		<?php get_template_part('nav', 'post'); ?>	
 		<section class="comments">
 			<?php comments_template( '', true ); ?>
 		</section>
