@@ -28,6 +28,7 @@ jQuery(document).ready(function($) {
 	});
 	
 	// top bar
+/*
 	$('body > header > section').topbar({
 		extra: 'test',
 		debug: true,
@@ -38,6 +39,7 @@ jQuery(document).ready(function($) {
 			tb.debug('expand done', obj );
 		}
 	});
+*/
 	
 	$('body > header').click(function(){
 		$('body').toggleClass('grid');

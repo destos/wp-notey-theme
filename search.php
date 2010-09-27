@@ -2,6 +2,7 @@
 
 		<div id="container">
 			<section id="content">
+			<?php //get_template_part('nav', 'top'); ?>
 			
 			<?php /* If there are no posts to display, such as an empty archive page */ ?>
 			<?php if ( ! have_posts() ) : ?>
@@ -17,7 +18,17 @@
 					</section><!-- .entry-content -->
 				</article><!-- #post-0 -->
 			<?php endif; ?>
-	
+			
+			<?php /* Start the Loop */ 
+			
+			while ( have_posts() ) : the_post();
+			
+			// get post type
+			get_template_part( 'type-'.get_post_type( get_the_ID() ), 'excerpt' );
+			
+			endwhile; ?>
+			
+			<?php get_template_part('nav', 'bottom'); ?>
 			</section><!-- #content -->
 		</div><!-- #container -->
 

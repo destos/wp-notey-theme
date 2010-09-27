@@ -25,7 +25,8 @@ class Theme{
 		//widget stuff
 		add_action( 'init',											array( &$this , 'widget_sidebars' ) );
 		add_action( 'widgets_init',							array( &$this , 'widgets_init' ) );
-																						
+		//add_action( 'pre_get_posts',						array( &$this , 'post_filters' ) );
+																
 		//
 		// template helpers
 		//																	
@@ -33,6 +34,7 @@ class Theme{
 		add_filter( 'the_content_more_link',		array( tmpl, 'excerpt_more' ) );
 		add_filter( 'excerpt_length',						array( tmpl, 'excerpt_length' ) );
 		
+		add_filter( 'home_template' ,						array( &$this, 'force_paged' ) );
 		
 		add_action( 'wp_head',									array( &$this , 'wp_head' ) );
 	}
@@ -119,6 +121,12 @@ class Theme{
 			wp_enqueue_style( 'css.fancybox' );	 
 		}
 		
+		// Set Menu location
+		
+		register_nav_menus(array(
+			'primary' => 'In Top bar'
+		));
+		
 	}
 	
 	// --------------------------------------------------------
@@ -175,9 +183,25 @@ class Theme{
 	
 	
 	// --------------------------------------------------------
-	// 
+	// Post Filters
 	//
+	function post_filters( $query ){
 	
+		// set home page to 5 posts
+		if( $query->is_home && !$query->is_paged ){
+			$query->set('posts_per_page', 5);
+		}
+		
+		return $query;
+	}
+	
+	function force_paged( $template ){
+		if( is_paged() ){
+			return get_query_template('paged');
+			//return false
+		}
+		return $template;
+	}
 	
 }
 
@@ -230,6 +254,7 @@ class top{
 			
 			// place in organized array
 			foreach ( (array) $arcresults as $arcresult ) {
+				//print_r($arcresult);
 				$yearly[$arcresult->year][$arcresult->month][$arcresult->day] = array( 'id' => $arcresult->ID, 'title' => $arcresult->title );	
 			}
 			
@@ -246,7 +271,8 @@ class top{
 					$o .= $before_month.'<strong>'.$wp_locale->get_month($month).'</strong>';
 					$o .= '<ul class="">';
 					foreach( $posts as $day => $post ){
-						$o .= get_archives_link(get_permalink($post['ID']), $post['title'] ,'html', '<span>'.$day.'</span>');
+						//$o .= $post['id'];
+						$o .= get_archives_link( get_permalink($post['id']), $post['title'] ,'html', '<span>'.$day.'</span>');
 					}
 											
 					$o .= '</ul>';
@@ -308,26 +334,26 @@ class tmpl{
 	
 	// Make a nice read more link on excerpts
 	static function excerpt_more( $more ) {
-		return '&hellip; <a href="'. get_permalink() . '">' . __('Continue&nbsp;reading&nbsp;<span class="meta-nav">&rarr;</span>', 'notey') . '</a>';
+		return '&hellip; <a href="'. get_permalink() . '#more-'.get_the_ID().'">' . __('Continue&nbsp;reading&nbsp;<span class="meta-nav">&rarr;</span>', 'notey') . '</a>';
 	}
 	
 	static function posted_on( $args = array() ) {
 		
 		$defaults = array(
 			'show_author' => false,
-			'show_modified_date' => true
+			'show_modified_date' => false
 		);
 		
 		extract( wp_parse_args( $args, $defaults ) );
 		
 		if( (bool) $show_author ){
-			printf( __( '<span class="%1$s">Posted on %2$s by %3$s</span>', 'notey' ),
+			printf( __( '<span class="%1$s"><span>Posted on<span> %2$s by %3$s</span>', 'notey' ),
 				'posted author', // TODO do something with the class
 				self::get_post_time(),
 				self::get_author()
 			);
 		}else{
-			printf( __( '<span class="%1$s">Posted on %2$s</span>', 'notey' ),
+			printf( __( '<span class="%1$s"><span>Posted on</span> %2$s</span>', 'notey' ),
 				'posted',
 				self::get_post_time()
 			);
@@ -345,7 +371,7 @@ class tmpl{
 	
 	static function get_post_time(){
 		return sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
-				get_permalink(),
+				get_permalink(), // TODO replace with archive time
 				esc_attr( get_the_time() ),
 				get_the_date()
 			);

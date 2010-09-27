@@ -117,7 +117,8 @@ input, select {
 
 
 html{
-
+	height: 100%;
+	
 }
 
 body{
@@ -148,13 +149,47 @@ body > header > section{
 	background: transparent url(img/header_border_colors.png) repeat-x center bottom;
 	min-width: 960px;
 }
+
 body > header nav{
-	display: none;
+	float: left;
+}
+
+body > header nav ul{
+	float: left;
+	margin-left: 18px;
+	margin-top: 13px;
+}
+
+body > header nav > ul > li{
+	float: left;
+	margin-right: 20px;
+}
+
+body > header nav > ul > li a{
+	display: block;
+	text-align: center;
+	min-width: 60px;
+	height: 30px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.3),inset 0 1px 10px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.3),inset 0 1px 10px rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.1);
+	padding-right: 6px;
+	padding-left: 6px;
+	color: #fff;
+	text-decoration: none;
+	font: normal normal normal 13px/35px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+body > header nav > ul > li a:hover{
+	-webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.1),inset 0 1px 10px rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.2);
+	color: rgba(255,255,255,0.9);
 }
 
 body > header hgroup{
 	float: left;
-	margin: ;
 	margin-top: 16px;
 	margin-left: 0px;
 }
@@ -166,10 +201,30 @@ body > header hgroup h1 a{
 	overflow: hidden;
 	text-indent: -40em;
 	height: 25px;
+	float: left;
 }
 body > header hgroup h1 a:focus,
 body > header hgroup h1 a:hover{
 	opacity: 0.8;
+}
+body > header hgroup h1 span{
+	display: block;
+	content: 'blog';
+	float: left;
+	margin-left: 10px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.3);
+	box-shadow: 0px 1px 0px rgba(255,255,255,0.3);
+	-moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.3);
+	background: rgba(0,0,0,0.3) url(img/blog.png) no-repeat right center;
+	height: 30px;
+	margin-top: -3px;
+	padding-right: 36px;
+	color: #fdfdfd;
+	font: normal normal 13px/34px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	padding-left: 8px;
 }
 body > header hgroup h4{
 	display: none;
@@ -182,34 +237,42 @@ body > header hgroup h4{
 }
 #container{
 	overflow: hidden;
+	min-height: 600px;
 }
 
+section#past,
 section#content{
 	width: 580px;
 	padding: 0 180px;
 	overflow: visible;
 }
 
+#sub_container{
+	padding: 45px 10px 1px 10px;
+	background: rgba(143,143,143,0.09) url(img/sub_content_rep.png) repeat-x center top;
+}
+section#past{
+	margin: 0 auto;
+}
+
 /* @group Archives */
 
 #archives{
-	position: absolute;
-	left: 180px;
-	width: 5000px;
+	margin-right: -40px;
 }
 
 #archives dl{
-	float: left;
-	width: 260px;
 	padding-top: 20px;
+	display: inline-block;
+	vertical-align: top;
+	width: 270px;
 	padding-right: 40px;
 }
 
 #archives dl dt{
-	color: #fff;
 	font: normal normal 24px/21px HelveticaNeue-Light, "Helvetica Neue Light", Helvetica;
 	/*text-align: right;*/
-	border-bottom: 2px solid rgba(255,254,255,0.4);
+	border-bottom: 2px solid rgba(47,46,52,0.76);
 	padding-bottom: 5px;
 }
 
@@ -219,12 +282,11 @@ section#content{
 
 #archives dl dd strong{
 	display: block;
-	color: #fff;
 	line-height: 21px;
 	/*text-align: right;*/
-	border-bottom: 1px solid rgba(255,254,255,0.2);
-	font-size: 14px;
-
+	border-bottom: 1px solid rgba(0,0,0,0.37);
+	font-size: 120%;
+	margin-top: 20px;
 }
 
 #archives dl dd ul{
@@ -240,7 +302,6 @@ section#content{
 	padding-left: 0;
 	position: relative;
 	line-height: 1.3em;
-	font-size: 80%;
 }
 
 #archives dl dd ul li span{
@@ -249,11 +310,11 @@ section#content{
 	width: 20px;
 	left: -30px;
 	text-align: right;
-	color: rgba(255,254,255,0.77);
+	color: rgba(0,0,0,0.77);
 }
 
 #archives dl dd ul li a{
-	color: #b7daff;
+	
 }
 
 /* @end */
@@ -263,20 +324,20 @@ section#content{
 /* @group Basic Content Styles */
 
 /* entry styling */
-
-.post{
+article.page,
+article.post{
 	margin-bottom: 60px;
 }
 
-.post a:link{
-	color: #4fbad6;
+.entry a:link{
+	color: #298bbc;
 }
-.post a:focus,
-.post a:hover{
+.entry a:focus,
+.entry a:hover{
 	text-decoration: none;
 }
-.post a.visited{
-	color: #e23789;
+.entry a.visited{
+	color: #414db8;
 }
 .post .entry{	
 
@@ -297,7 +358,7 @@ section#content{
 	clear: both;
 	margin-bottom: 0.2em;
 	font-style: normal;
-	font-family: "etica-display-1","etica-display-2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
+	font-family: "etica--1","etica--2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
 	line-height: 1.2em;
 	font-variant: normal;
 	font-weight: normal;
@@ -309,42 +370,152 @@ section#content{
 .entry > p{
 	text-align: justify;
 }
-article.post header h2{
-	margin-bottom: 10px;
-	font: normal 2.2em/1.07em "etica-display-1","etica-display-2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
+h1.page-title{
+	margin-bottom: 50px !important;
+}
+
+h1.page-title span{
+	font-weight: 400;
+}
+.archive-meta{
+	margin-top: -30px;
+	margin-bottom: 50px;
+	text-align: justify;
+	font-size: 15px;
+	line-height: 26px;
+	color: #393a3e;	
+	font-family: "etica-1","etica--2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
+	font-weight: 400;
+
+}
+.archive-meta p{
+	margin-bottom: 14px;
+}
+
+h1.page-title,
+article header h3,
+article header h2{
+	color: #202734;
+	margin-bottom: 14px;
+	display: block;
+	font-style: normal;
+	font-family: "etica-1","etica-2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
+	line-height: 1.07em;
+	font-weight: 400;
+	overflow: visible;
+}
+h1.page-title,
+article header h2{
+	font-weight: 200;
+}
+article header h2{
+	font-size: 2.2em;
 	word-spacing: 1px;
 	letter-spacing: -1px;
 }
 
-
-article.post header h2 a,
-article.post header h2 a:link{
+article header a,
+article header a:link{
 	text-decoration: none;
-	color: #384356;
+	color: #202734;
 }
-article.post header h2 a:hover{
+/*article.post header div a{
+	border-bottom: 1px dashed #41a0b9;
+}
+
+article.post header div a:hover{
+	border-bottom-style: solid;
+	text-decoration: none;
+}*/
+article header a:hover{
 	text-decoration: underline;
 }
 
-article.post header div{
-	font-size: 11px;
-	margin-bottom: 20px;
-	line-height: 21px;
-	/*background-color: rgba(251,252,219,0.65);*/
-	padding-top: 1px;
-	text-align: right;
-	color: #6d6d6d;
-	padding-right: 10px;
-	border: 1px solid #bdc2cb;
-	border-right-style: none;
-	border-left-style: none;
-	margin-top: 20px;
+article.post section.entry-utility{
+	font-size: 13px;
+	line-height: 2em;
+	background-color: rgba(215,216,219,0.1);
+	text-align: left;
+	color: #4d4d4d;
+	overflow: hidden;
+	margin: 14px 0;
+}
+article.post section.entry-utility div.taxonomy.comments{
+	margin-right: 153px;
 }
 
+article.post section.entry-utility span.meta-sep{
+	float: left;
+	width: 18px;
+	text-indent: -40em;
+	display: none;
+}
+
+article.post section.entry-utility .date{
+	float: right;
+}
+article.post section.entry-utility span.tag-links,
+article.post section.entry-utility span.cat-links,
+article.post section.entry-utility span.comments-link{
+	float: left;
+	display: block;
+	margin-right: 18px;
+}
+
+article.post section.entry-utility span.posted > span,
+article.post section.entry-utility .entry-utility-prep{
+	background: url(img/sprites.png) no-repeat;
+	width: 20px;
+	text-indent: -50em;
+	overflow: hidden;
+	display: block;
+	float: left;
+}
+
+article.post section.entry-utility .entry-utility-prep-cat-links{
+	background-position: 0 -23px;
+}
+article.post section.entry-utility .entry-utility-prep-tag-links{
+	background-position: 0 1px;
+}
+article.post section.entry-utility span.posted > span{
+	background-position: 0 -113px;
+}
+/*article.post section.entry-utility .edit-link{
+	float: left;
+}*/
+article.post section.entry-utility .edit-link a{
+	display: block;
+	background: url(img/sprites.png) no-repeat 2px -92px;
+	text-indent: -40em;
+	overflow: hidden;
+}
+
+article.post section.entry-utility span.comments-link a{
+	display: block;
+	padding-left: 17px;
+	background: url(img/sprites.png) no-repeat 0 -47px;
+}
+article.post section.entry-utility{
+	
+}
+
+article.post section.entry-utility a{
+	color: #798089;
+	text-shadow: rgba(255,255,255,0.6) 0 1px 0;
+}
+article.post section.entry-utility a:hover{
+	color: #303336;
+	text-shadow: rgba(255,255,255,0.7) 0 1px 0;
+	text-decoration: none;
+}
 article.post{
 	
 }
 
+section#past article.post{
+	margin-bottom: 40px;
+}
 /* list items */
 .entry ul{
 	margin: 18px 0;
@@ -378,6 +549,10 @@ article.post{
 	-moz-border-radius-bottomright: 4px;
 	margin-left: -21px;
 	margin-right: -20px;
+}
+.entry blockquote cite{
+	font-style: italic;
+	white-space: nowrap;
 }
 .entry blockquote p{
 	margin: 10px 0;
@@ -467,10 +642,10 @@ blockquote.right {
 	float: right;
 	display: block;
 }
-.entry dl.alignleft{
+/*.entry dl.alignleft{
 	float: left;
 	text-align: center;
-}
+}*/
 .entry img.aligncenter{
 	display: block;
 	margin-right: auto;
@@ -558,15 +733,26 @@ img.aligncenter {
 #comments .navigation {
 	padding: 0 0 18px 0;
 }
+
 h3#comments-title,
 h3#reply-title {
-	color: #000;
+	color: #5f6380;
 	font-size: 20px;
-	font-weight: bold;
+	font-style: normal;
+	font-family: "etica-1","etica-2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
+	line-height: 1.2em;
+	font-variant: normal;
+	font-weight: 200;
 	margin-bottom: 0;
+	
 }
 h3#comments-title {
 	padding: 24px 0;
+}
+h3#comments-title em{
+	color: #2e314c;
+	font-style: normal;
+	font-weight: 400;
 }
 .commentlist {
 	list-style: none;
@@ -613,13 +799,30 @@ h3#comments-title {
 }
 
 .comment-author {
+	
+}
+
+.comment-author cite{
+	color: #2a2a2a;
+}
+
+.comment-author a.url{
+	color: #2a2a2a;
+	text-decoration: none;
+	border-bottom: 1px solid #2474b8;
+}
+
+.comment-author a.url:hover{
+	color: #2a2a2a;
+	text-decoration: none;
+	border-bottom: none;
 }
 .comment-author cite {
 	color: #000;
 	font-style: normal;
 	font-weight: bold;
 	display: block;
-	margin-left: 50px;
+	
 	line-height: 1.3em;
 	overflow: hidden;
 }
@@ -629,7 +832,7 @@ h3#comments-title {
 }
 .comment-meta {
 	font-size: 12px;
-	margin: 0;
+	margin: 0 0 11px;
 }
 .comment-meta a:link,
 .comment-meta a:visited {
@@ -648,6 +851,7 @@ h3#comments-title {
 }
 .comment-body p{
 	margin-bottom: 10px;
+	font-size: 14px;
 }
 
 .comment-body{
@@ -662,23 +866,39 @@ h3#comments-title {
 .commentlist .bypostauthor {
 
 }
-.reply {
+
+.commentlist .bypostauthor > div > div > .comment-author cite{
+	border-bottom: 2px dashed #27b6ff;
+}
+
+#comments .reply {
 	font-size: 12px;
 	clear: both;
 	text-align: right;
-	
 	margin-top: -10px;
-	padding-right: 20px;
 	border-bottom: 1px solid #e7e7e7;
 	margin-left: -20px;
+	overflow: hidden;
 }
-.reply a,
+#comments .reply a,
 a.comment-edit-link {
-	color: #888;
+	color: #798089;
+	display: block;
+	float: right;
+	background: url(img/sprites.png) no-repeat;
+	padding-left: 17px;
+	text-decoration: none;
 }
-.reply a:hover,
+#comments .reply a{
+	background-position: 0 -72px;
+}
+#comments a.comment-edit-link{
+	background-position: 0 -93px;
+	margin-left: 15px;
+}
+#comments .reply a:hover,
 a.comment-edit-link:hover {
-	color: #ff4b33;
+	opacity: 0.6;
 }
 .commentlist .children {
 	list-style: none;
@@ -790,7 +1010,20 @@ footer{
 	font-size: 80%;
 	clear: both;
 	background: #2f2e34;
-	color: #d1d1d1;
+	color: #cdcdcd;
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+footer a{
+	color: #90bbd7;
+}
+
+footer a:hover{
+	color: #64a9d7;
+	text-decoration: none;
+}
+footer p.wrap{
+	width: 580px;
+	padding: 0;
+	line-height: 1.5em;
 }
