@@ -12,9 +12,9 @@
 					
 					<section class="entry">
 						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'notey' ), 'after' => '</div>' ) ); ?>
 					</section><!-- .entry -->
-										
+					
+					<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'notey' ), 'after' => '</div>' ) ); ?>
 			<!--
 			<?php trackback_rdf(); ?>
 			-->
