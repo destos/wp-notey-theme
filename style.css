@@ -161,27 +161,31 @@ body > header nav > ul > li{
 body > header nav > ul > li a{
 	display: block;
 	text-align: center;
-	min-width: 60px;
-	height: 30px;
+	height: 28px;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
+	-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.8),inset 0 1px 1px rgba(255,255,255,0.5);
+	-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.8),inset 0 1px 1px rgba(255,255,255,0.5);
+	background: rgba(0,0,0,0.1);
+	padding-right: 11px;
+	color: #fff;
+	text-decoration: none;
+	font: normal normal normal 13px/33px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	border: 1px solid rgba(0,0,0,0.21);
+	padding-left: 11px;
+}
+body > header nav > ul > li a:hover{
+	-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.5),inset 0 1px 1px rgba(255,255,255,0.2);
+	-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.5),inset 0 1px 1px rgba(255,255,255,0.2);
+	background: rgba(0,0,0,0.1);
+	text-decoration: none;
+}
+body > header nav > ul > li.current-menu-item a{
 	-webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.3),inset 0 1px 10px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.3),inset 0 1px 10px rgba(0,0,0,0.2);
 	background: rgba(0,0,0,0.1);
-	padding-right: 6px;
-	padding-left: 6px;
-	color: #fff;
 	text-decoration: none;
-	font: normal normal normal 13px/35px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-}
-body > header nav > ul > li a:hover{
-	-webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.1),inset 0 1px 10px rgba(0,0,0,0.2);
-	background: rgba(0,0,0,0.2);
-	color: rgba(255,255,255,0.9);
-}
-body > header nav > ul > li.current-menu-item a{
-	background: rgba(0,0,0,0.4);
 }
 
 body > header hgroup{
@@ -409,7 +413,6 @@ article.post{
 .entry h4,
 .entry h5{
 	margin-top: 1em;
-	clear: both;
 	margin-bottom: 0.2em;
 	font-style: normal;
 	font-family: "etica--1","etica--2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
