@@ -111,6 +111,10 @@ class Theme{
 			'http://use.typekit.com/vrs0cha.js',
 			array(), '0.1');
 		
+		wp_register_script( 'topbar',
+		get_bloginfo('template_directory') . '/js/topbar.js',
+		array('jquery'), '0.1');
+		
 		// main theme js functionality file
 		wp_register_script( 'theme_func',
 		get_bloginfo('template_directory') . '/js/theme_functionality.js',
