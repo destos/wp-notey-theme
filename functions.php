@@ -92,7 +92,7 @@ class Theme{
 		// 
 		wp_register_script( 'jquery.fancybox',
 		get_bloginfo('template_directory') . '/js/lib/fancybox/jquery.fancybox-1.3.1.pack.js',
-		array('jquery','jquery.mousewheel','jquery.easing'), '1.3.1');
+		array('jquery','jquery.mousewheel','jquery.easing'), '1.3.1'); //, 'css.fancybox'
 			
 			wp_register_style( 'css.fancybox',
 			get_bloginfo('template_directory') . '/css/jquery.fancybox-1.3.1.css',
@@ -115,16 +115,24 @@ class Theme{
 		get_bloginfo('template_directory') . '/js/topbar.js',
 		array('jquery'), '0.1');
 		
+		wp_register_script( 'tipsy',
+		get_bloginfo('template_directory') . '/js/lib/jquery.tipsy.js',
+		array('jquery' ), '1.0.0a'); //, 'css.tipsy'
+		
+			wp_register_style( 'css.tipsy',
+			get_bloginfo('template_directory') . '/css/tipsy.css',
+			array(), '1.0.0a', 'screen' );
+		
 		// main theme js functionality file
 		wp_register_script( 'theme_func',
 		get_bloginfo('template_directory') . '/js/theme_functionality.js',
-		array( 'jquery', 'jquery.fancybox', 'typekit' ), '0.2');
+		array( 'jquery', 'jquery.fancybox', 'typekit', 'tipsy' ), '0.3');
 		
 		if(!is_admin()){
 			wp_enqueue_script( 'theme_func' );
 			wp_enqueue_style( 'css.fancybox' );	 
+			wp_enqueue_style( 'css.tipsy' );
 		}
-		
 		// Set Menu location
 		
 		register_nav_menus(array(
@@ -138,9 +146,9 @@ class Theme{
 	//
 	
 	function wp_head(){
-		echo '<!-- Type Kit-->'; 
-		echo '<script type="text/javascript">try{Typekit.load();}catch(e){}</script>';
-		echo '<!-- notey theme -->';
+		echo '<!-- Type Kit-->'."\n"; 
+		echo '<script type="text/javascript">try{Typekit.load();}catch(e){}</script>'."\n";
+		echo '<!-- notey theme -->'."\n";
 		
 	}
 	
