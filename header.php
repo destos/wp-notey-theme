@@ -54,6 +54,7 @@
 				'context' => 'frontend'
 			) ); 
 		?>
+			<a href="<?php bloginfo('rss2_url'); ?>" class="feed" data-tip="Subscribe to the Site RSS Feed">Site Feed</a>
 			</div>
 		</section>
 	</header>

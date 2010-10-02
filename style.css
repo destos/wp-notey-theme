@@ -114,7 +114,7 @@ input, select {
     vertical-align:middle;
 }
 /* @end */
-
+body,
 html{
 	height: 100%;
 	background: #2f2e34;
@@ -141,6 +141,29 @@ body > header > section{
 	width: 100%;
 	background: transparent url(img/header_border_colors.png) repeat-x center bottom;
 	min-width: 960px;
+}
+
+#headwrap a.feed{
+	float: right;
+	margin-top: 17px;
+	display: block;
+	width: 24px;
+	height: 24px;
+	overflow: hidden;
+	text-indent: -40em;
+	background: transparent url(img/feed-24x24.png) no-repeat center center;
+	padding-left: 7px;
+}
+	/*-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+	-webkit-border-radius: 2px;
+	-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+	-moz-border-radius: 2px;
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+	border-radius: 2px;*/
+#headwrap a.feed:hover{
+	/*-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.1);*/
 }
 
 body > header nav{
@@ -347,6 +370,11 @@ nav.post-nav{
 	);
 	margin: 0 -10px 50px;
 	font-family: "etica-1","etica-2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
+	vertical-align: middle;
+}
+nav.post-nav span{
+	display: inline-block;
+	vertical-align: top;
 }
 article.post nav.post-nav{
 	margin-top: 30px;
@@ -372,10 +400,15 @@ nav.post-nav a:hover{
 }
 nav.post-nav .nav-previous{
 	float: right;
+	/*text-align: right;*/
 }
 
 nav.post-nav .nav-next{
-	float: rl;
+	float: left;
+}
+nav.post-nav a{
+	max-width: 265px;
+	display: inline-block;
 }
 
 
@@ -427,13 +460,29 @@ article.post{
 .entry > p{
 	text-align: justify;
 }
+
+.archive-info{
+	position: relative;
+}
 h1.page-title{
 	margin-bottom: 45px !important;
+	padding-right: 35px;
 }
-
 h1.page-title span{
 	font-weight: 400;
 }
+.archive-info a.feed{
+	position: absolute;
+	top: 8px;
+	right: 7px;
+	width: 16px;
+	height: 16px;
+	background: url(img/feed-16x16.png) no-repeat center center;
+	padding: 5px;
+	overflow: hidden;
+	text-indent: -40em;
+}
+
 .archive-meta{
 	margin-top: -30px;
 	margin-bottom: 50px;

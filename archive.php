@@ -6,7 +6,7 @@
 	if ( have_posts() )
 the_post();
 ?>
-
+			<div class="archive-info">
 			<h1 class="page-title">
 <?php if ( is_day() ) :
 	 printf( __( 'Daily Archives: <span>%s</span>', 'twentyten' ), get_the_date() );
@@ -25,7 +25,9 @@ endif; ?>
 			
 <?php
 
-if( is_tag() || is_category() ){
+if( is_tag() || is_category() || is_tax() ){
+	echo '<a href="'.get_term_feed_link($wp_query->queried_object->term_id,$wp_query->queried_object->taxonomy).'" class="feed" data-tip="Subscribe to the '.$wp_query->queried_object->name.' Feed" data-tip-grav="se">'.$wp_query->queried_object->name.' Feed</a>';
+	
 	$description = term_description();
 	if ( ! empty( $description ) )
 		echo '<div class="archive-meta">' . $description . '</div>';
@@ -35,6 +37,8 @@ if( is_tag() || is_category() ){
 
 rewind_posts();
 			?>
+			</div><!-- end .archive-info -->
+			
 			<?php //get_template_part('nav', 'top'); ?>
 			<?php			
 			while ( have_posts() ) : the_post();
