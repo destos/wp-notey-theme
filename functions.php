@@ -125,7 +125,7 @@ class Theme{
 		
 		// main theme js functionality file
 		wp_register_script( 'theme_func',
-		get_bloginfo('template_directory') . '/js/theme_functionality.js',
+		get_bloginfo('template_directory') . '/js/theme.js',
 		array( 'jquery', 'jquery.fancybox', 'typekit', 'tipsy' ), '0.3');
 		
 		if(!is_admin()){

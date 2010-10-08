@@ -69,7 +69,7 @@ jQuery(document).ready(function($) {
 			
 		var is_input = $(ele).is('input');
 		
-		console.log(is_input);
+		//console.log(is_input);
 		
 		var binder   = options.live ? 'live' : 'bind',
         eventIn  = !is_input ? 'mouseenter' : 'focus',
