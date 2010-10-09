@@ -123,16 +123,22 @@ class Theme{
 			get_bloginfo('template_directory') . '/css/tipsy.css',
 			array(), '1.0.0a', 'screen' );
 		
+		wp_register_script( 'modernizr',
+		get_bloginfo('template_directory') . '/js/lib/modernizr-1.5.min.js',
+		array(), '1.5');
+		
 		// main theme js functionality file
 		wp_register_script( 'theme_func',
 		get_bloginfo('template_directory') . '/js/theme.js',
 		array( 'jquery', 'jquery.fancybox', 'typekit', 'tipsy' ), '0.3');
 		
 		if(!is_admin()){
+			wp_enqueue_script( 'modernizr' );
 			wp_enqueue_script( 'theme_func' );
 			wp_enqueue_style( 'css.fancybox' );	 
 			wp_enqueue_style( 'css.tipsy' );
 		}
+		
 		// Set Menu location
 		
 		register_nav_menus(array(
@@ -151,8 +157,6 @@ class Theme{
 		echo '<!-- notey theme -->'."\n";
 		
 	}
-	
-	
 	
 	// --------------------------------------------------------
 	// Widgets

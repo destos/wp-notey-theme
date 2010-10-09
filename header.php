@@ -2,26 +2,33 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-
-<title><?php tmpl::title(); ?></title>
-
-<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
-
-<link rel="icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/ico/fav_icon.ico" type="image/x-icon"/>
-
-<!--[if lte IE 8]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<!--[if lte IE 7]>
-	<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js" type="text/javascript"></script><![endif]-->
-<!--[if lt IE 7]>
-	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/ie6.css"/><![endif]-->
-
-<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
-
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<?php wp_head() ?>
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+	
+	<!-- www.phpied.com/conditional-comments-block-downloads/ -->
+  <!--[if IE]><![endif]-->
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+	       Remove this if you use the .htaccess -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title><?php tmpl::title(); ?></title>
+	
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+  
+  <!-- CSS : implied media="all" -->
+	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" >
+	<!-- For the less-enabled mobile browsers like Opera Mini -->
+  <link rel="stylesheet" media="handheld" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/handheld.css">
+  
+	<link rel="shortcut icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/favicon.ico" >
+	<link rel="apple-touch-icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/apple-touch-icon.png">
+		
+	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
+	
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" >
+	<?php wp_head() ?>
 
 </head>
 
