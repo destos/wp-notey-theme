@@ -23,8 +23,9 @@ class Theme{
 	
 		add_action( 'after_setup_theme',				array( &$this , 'theme_init' ) );
 		//widget stuff
-		add_action( 'init',											array( &$this , 'widget_sidebars' ) );
-		add_action( 'widgets_init',							array( &$this , 'widgets_init' ) );
+		//add_action( 'init',											array( &$this , 'widget_sidebars' ) );
+		//add_action( 'widgets_init',							array( &$this , 'widgets_init' ) );
+		
 		//add_action( 'pre_get_posts',						array( &$this , 'post_filters' ) );
 																
 		//
@@ -37,6 +38,7 @@ class Theme{
 		add_filter( 'home_template' ,						array( &$this, 'force_paged' ) );
 		
 		add_action( 'wp_head',									array( &$this , 'wp_head' ) );
+		add_action( 'wp_footer',								array( &$this , 'wp_footer' ) );
 	}
 	
 	
@@ -130,7 +132,7 @@ class Theme{
 		// main theme js functionality file
 		wp_register_script( 'theme_func',
 		get_bloginfo('template_directory') . '/js/theme.js',
-		array( 'jquery', 'jquery.fancybox', 'typekit', 'tipsy' ), '0.3');
+		array( 'jquery', 'jquery.fancybox', 'tipsy' ), '0.3'); //, 'typekit'
 		
 		if(!is_admin()){
 			wp_enqueue_script( 'modernizr' );
@@ -150,11 +152,15 @@ class Theme{
 	// --------------------------------------------------------
 	// 
 	//
-	
 	function wp_head(){
+		//wp_enqueue_script( 'typekit' );
 		echo '<!-- Type Kit-->'."\n"; 
+		echo '<script type="text/javascript" src="http://use.typekit.com/vrs0cha.js"></script>'."\n";
 		echo '<script type="text/javascript">try{Typekit.load();}catch(e){}</script>'."\n";
-		echo '<!-- notey theme -->'."\n";
+		echo '<!-- notey theme -->'."\n";		
+	}
+	
+	function wp_footer(){
 		
 	}
 	
