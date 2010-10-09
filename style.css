@@ -13,9 +13,10 @@ Version: 0.1
 
 /* 
 html5doctor.com Reset Stylesheet
-v1.4.1 
-2010-03-01
-Author: Richard Clark - http://richclarkdesign.com
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
 */
 
 html, body, div, span, object, iframe,
@@ -43,8 +44,8 @@ body {
     line-height:1;
 }
 
-article,aside,canvas,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section,summary { 
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
     display:block;
 }
 
@@ -65,18 +66,19 @@ q:before, q:after {
 a {
     margin:0;
     padding:0;
-    border:0;
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
 }
 
+/* change colours to suit your needs */
 ins {
     background-color:#ff9;
     color:#000;
     text-decoration:none;
 }
 
+/* change colours to suit your needs */
 mark {
     background-color:#ff9;
     color:#000; 
@@ -89,7 +91,7 @@ del {
 }
 
 abbr[title], dfn[title] {
-    border-bottom:1px dotted #000;
+    border-bottom:1px dotted;
     cursor:help;
 }
 
@@ -98,6 +100,7 @@ table {
     border-spacing:0;
 }
 
+/* change border colour to suit your needs */
 hr {
     display:block;
     height:1px;
