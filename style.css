@@ -313,6 +313,10 @@ body > header hgroup h4{
 	padding-top: 110px;
 	background: url(img/bg_top.gif) repeat-x scroll center 60px, 
 	url(img/bg_rep.gif) repeat scroll;
+	background-color: #e0e2e4;
+}
+.no-multiplebgs #container{
+	background: #e0e2e4 url(img/bg_rep.gif) repeat scroll;
 }
 
 body.grid #container{
