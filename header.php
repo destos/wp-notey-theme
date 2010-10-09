@@ -54,7 +54,7 @@
 				'context' => 'frontend'
 			) ); 
 		?>
-			<a href="http://feeds.feedburner.com/patrick-forringer-blog<?php //bloginfo('rss2_url'); ?>" class="feed" data-tip="Subscribe to the Site RSS Feed">Site Feed</a>
+			<a href="http://feeds.feedburner.com/patrick-forringer-blog<?php //bloginfo('rss2_url'); ?>" class="feed" data-tip="Subscribe to the Site RSS Feed" data-tip-grav="ne">Site Feed</a>
 			</div>
 		</section>
 	</header>

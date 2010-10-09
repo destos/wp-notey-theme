@@ -142,14 +142,15 @@ body > header > section{
 
 #headwrap a.feed{
 	float: right;
-	margin-top: 17px;
+	margin-top: 15px;
 	display: block;
 	width: 24px;
 	height: 24px;
 	overflow: hidden;
 	text-indent: -40em;
 	background: transparent url(img/feed-24x24.png) no-repeat center center;
-	padding-left: 7px;
+	padding-bottom: 4px;
+	margin-right: 7px;
 }
 	/*-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
 	-webkit-border-radius: 2px;
