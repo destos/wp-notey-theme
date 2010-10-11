@@ -23,6 +23,7 @@
 	<link rel="stylesheet" media="handheld" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/handheld.css">
 	
 	<link rel="shortcut icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/favicon.ico" >
+	<!-- <link rel="shortcut icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/macthrob-small.png" > -->
 	<link rel="apple-touch-icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/apple-touch-icon.png">
 		
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
