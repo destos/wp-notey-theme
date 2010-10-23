@@ -126,7 +126,7 @@ class Theme{
 			array(), '1.0.0a', 'screen' );
 		
 		wp_register_script( 'modernizr',
-		get_bloginfo('template_directory') . '/js/lib/modernizr-1.5.min.js',
+		get_bloginfo('template_directory') . '/js/lib/modernizr.js',
 		array(), '1.5');
 		
 		// main theme js functionality file
