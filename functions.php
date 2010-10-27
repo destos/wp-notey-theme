@@ -39,9 +39,9 @@ class Theme{
 		
 		add_action( 'wp_head',									array( &$this , 'wp_head' ) );
 		add_action( 'wp_footer',								array( &$this , 'wp_footer' ) );
+		add_action( 'wp_enqueue_scripts',				array( &$this , 'enqueue_scripts' ) );
 	}
-	
-	
+		
 	// --------------------------------------------------------
 	// Initialize everything
 	//
@@ -127,25 +127,36 @@ class Theme{
 		
 		wp_register_script( 'modernizr',
 		get_bloginfo('template_directory') . '/js/lib/modernizr.js',
-		array(), '1.5');
+		array(), '1.6pre');
+		
+		wp_register_script( 'gprofiles', 'http://s.gravatar.com/js/gprofiles.js', array( 'jquery' ), 'e' );
 		
 		// main theme js functionality file
 		wp_register_script( 'theme_func',
 		get_bloginfo('template_directory') . '/js/theme.js',
 		array( 'jquery', 'jquery.fancybox', 'tipsy' ), '0.3'); //, 'typekit'
-		
-		if(!is_admin()){
-			wp_enqueue_script( 'modernizr' );
-			wp_enqueue_script( 'theme_func' );
-			wp_enqueue_style( 'css.fancybox' );	 
-			wp_enqueue_style( 'css.tipsy' );
-		}
-		
+				
 		// Set Menu location
 		
 		register_nav_menus(array(
 			'primary' => 'In Top bar'
 		));
+		
+	}
+	
+	// --------------------------------------------------------
+	// Enqueue Scripts
+	//
+	
+	function enqueue_scripts(){
+	
+		if(!is_admin()){
+			wp_enqueue_script( 'modernizr' );
+			wp_enqueue_script( 'theme_func' );
+			wp_enqueue_script( 'gprofiles' );
+			wp_enqueue_style( 'css.fancybox' );	 
+			wp_enqueue_style( 'css.tipsy' );
+		}
 		
 	}
 	
