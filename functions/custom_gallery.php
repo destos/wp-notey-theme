@@ -5,9 +5,11 @@
 //
 
 
-add_filter( 'post_gallery', 'gurustu_gallery' );
+add_filter( 'post_gallery', 'custom_gallery' );
 
-function gurustu_gallery( $attr ){
+add_image_size( 'gallery-thumbnail', 180, 180, true );
+
+function custom_gallery( $attr ){
 
 	global $post, $wp_locale;
 
