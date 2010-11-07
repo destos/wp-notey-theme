@@ -38,6 +38,7 @@ class Theme{
 		add_filter( 'home_template' ,						array( &$this, 'force_paged' ) );
 		
 		add_action( 'wp_head',									array( &$this , 'wp_head' ) );
+		add_action( 'admin_head',									array( &$this , 'wp_head' ) );
 		add_action( 'wp_footer',								array( &$this , 'wp_footer' ) );
 		add_action( 'wp_enqueue_scripts',				array( &$this , 'enqueue_scripts' ) );
 	}
