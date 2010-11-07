@@ -161,8 +161,9 @@ class Theme{
 	}
 	
 	// --------------------------------------------------------
-	// 
+	// Custom elements in head for theme
 	//
+	
 	function wp_head(){
 		//wp_enqueue_script( 'typekit' );
 		echo '<!-- Type Kit-->'."\n"; 
@@ -210,7 +211,7 @@ class Theme{
 	// Setup Custom Theme Widgets
 	//
 	function widgets_init(){ #action widgets_init
-		// look up widgets directory and auto load files
+		// TODO: look up widgets directory and auto load files
 		
 	}
 	
