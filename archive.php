@@ -1,7 +1,9 @@
 <?php get_header(); ?>
 
 		<div id="container">
-			<section id="content">
+			<section id="content" class="container">
+			<div class="row">
+					<div class="eightcol">
 <?php
 	if ( have_posts() )
 the_post();
@@ -49,9 +51,14 @@ rewind_posts();
 			endwhile; ?>
 			
 			<?php get_template_part('nav', 'bottom'); ?>
+					</div>
+					<div class="fourcol last">
+						<?php get_sidebar(); ?>
+					</div>
+				</div>
 			</section><!-- #content -->
 		</div><!-- #container -->
 
-<?php get_sidebar(); ?>
+
 <?php get_footer(); ?>
 

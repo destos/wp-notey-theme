@@ -7,24 +7,21 @@
 	
 	<!-- www.phpied.com/conditional-comments-block-downloads/ -->
 	<!--[if IE]><![endif]-->
+	       
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/ie.css" type="text/css" media="screen" />
+	<![endif]-->
 	
-	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
-	       Remove this if you use the .htaccess -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
 	<title><?php tmpl::title(); ?></title>
 	
-	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
 	<meta name="viewport" content="width=device-width; initial-scale=1.0">
 	
-	<!-- CSS : implied media="all" -->
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" >
-	<!-- For the less-enabled mobile browsers like Opera Mini -->
-	<link rel="stylesheet" media="handheld" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/handheld.css">
 	
-	<link rel="shortcut icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/favicon.ico" >
-	<!-- <link rel="shortcut icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/macthrob-small.png" > -->
-	<link rel="apple-touch-icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/apple-touch-icon.png">
+	<!-- <link rel="shortcut icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/favicon.ico" > -->
+	<!-- <link rel="apple-touch-icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/apple-touch-icon.png"> -->
 		
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	

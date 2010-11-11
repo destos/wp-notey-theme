@@ -114,15 +114,19 @@ input, select {
     vertical-align:middle;
 }
 /* @end */
+html{
+	font-size: 62.5%;
+}
 body,
 html{
 	height: 100%;
 	background: #2f2e34;
-	min-width: 960px; /* prevent inner elements from shrinking */
 }
 
-body{
+html body{
 	font-family: "droid-serif-1","droid-serif-2",serif;
+	font-size: 1.4em;
+	line-height: 1.7em;
 }
 
 body > header{
@@ -134,6 +138,7 @@ body > header{
 	left: 0;
 	overflow: hidden;
 	border-bottom: 1px solid rgba(255,255,255,0.8);
+	display: none;
 }
 body > header > section{
 	height: 60px;
@@ -374,11 +379,7 @@ body > header hgroup h1 span{
 body > header hgroup h4{
 	display: none;
 }
-.wrap{
-	width: 940px;
-	margin: 0 auto;
-	padding: 0 10px;
-}
+
 #container{
 	overflow: hidden;
 	padding-top: 110px;
@@ -394,17 +395,20 @@ body.grid #container{
 	background: url(img/960-16-col.png) center center repeat-y, url(img/bg_top.gif) repeat-x scroll center 60px, url(img/bg_rep.gif) repeat scroll;	
 }
 
-section#past,
+/*section#past,
 section#content{
 	margin: 0 auto;
 	width: 580px;
 	padding: 0 180px;
 	overflow: visible;
-}
+}*/
 
 #sub_container{
-	padding: 45px 10px 1px 10px;
 	background: rgba(143,143,143,0.09) url(img/sub_content_rep.png) repeat-x center top;
+	padding-top: 45px;
+	padding-bottom: 1px;
+	clear: both;
+	overflow: hidden;
 }
 
 /* @group Archives */
@@ -497,6 +501,7 @@ nav.post-nav{
 	margin: 0 -10px 50px;
 	font-family: "etica-1","etica-2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
 	vertical-align: middle;
+	font-size: 1.6em;
 }
 nav.post-nav span{
 	display: inline-block;
@@ -531,17 +536,20 @@ nav.post-nav a:hover{
 }
 nav.post-nav .nav-previous{
 	float: right;
-	/*text-align: right;*/
+	text-align: right;
 }
-
 nav.post-nav .nav-next{
 	float: left;
 }
+nav.post-nav .nav-next,
+nav.post-nav .nav-previous{
+	width: 50%;
+}
+
 nav.post-nav a{
 	max-width: 265px;
 	display: inline-block;
 }
-
 
 /* @group Basic Content Styles */
 
@@ -566,9 +574,20 @@ article.post{
 }
 
 .entry{
-	font-size: 14px;
-	line-height: 24px;
 	color: #404145;
+}
+
+/* Etcia Font for headers */
+.entry h1,
+.entry h2,
+.entry h3,
+.entry h4,
+.entry h5,
+.archive-meta,
+h1.page-title,
+article header h3,
+article header h2{
+	font-family: "etica-1","etica--2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
 }
 
 .entry h1,
@@ -577,10 +596,9 @@ article.post{
 .entry h4,
 .entry h5{
 	margin-top: 1em;
-	margin-bottom: 0.2em;
+	margin-bottom: 0.8em;
 	font-style: normal;
-	font-family: "etica--1","etica--2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
-	line-height: 1.2em;
+	line-height: 1.5em;
 	font-variant: normal;
 	font-weight: normal;
 }
@@ -621,31 +639,31 @@ h1.page-title span{
 	font-size: 15px;
 	line-height: 26px;
 	color: #393a3e;	
-	font-family: "etica-1","etica--2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
 	font-weight: 400;
 }
 .archive-meta p{
 	margin-bottom: 14px;
 }
 
-h1.page-title,
 article header h3,
 article header h2{
 	color: #202734;
 	margin-bottom: 14px;
 	display: block;
 	font-style: normal;
-	font-family: "etica-1","etica-2",'HelveticaNeue-Light', "'Helvetica Neue Light'", "'Helvetica Neue'", Arial, Helvetica, sans-serif;
-	line-height: 1.07em;
+	line-height: 1.2em;
 	font-weight: 400;
 	overflow: visible;
+	font-size: 1.6em;
 }
+
 h1.page-title,
 article header h2{
 	font-weight: 200;
 }
+h1.page-title,
 article header h2{
-	font-size: 2.2em;
+	font-size: 2.5em;
 	word-spacing: 1px;
 	letter-spacing: -1px;
 }
@@ -669,7 +687,7 @@ article header a:hover{
 }
 
 article.post section.entry-utility{
-	font-size: 13px;
+	font-size: 0.9em;
 	line-height: 2em;
 	background-color: rgba(215,216,219,0.1);
 	text-align: left;
@@ -1258,9 +1276,129 @@ footer a:hover{
 	color: #64a9d7;
 	text-decoration: none;
 }
-footer p.wrap{
-	width: 580px;
-	padding: 0;
-	line-height: 1.5em;
+
+
+/* @group 1140 grid */
+
+/* CSS Resets */
+
+/* html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,q,small,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;margin:0;padding:0}article,aside,figure,figure img,figcaption,hgroup,footer,header,nav,section,video,object{display:block}a img{border:0}figure{position:relative}figure img{width:100%} */
+
+
+/* The 1140px Grid by Andy Taylor – http://cssgrid.net – http://www.twitter.com/andytlr – http://www.catchingzebra.com */
+
+.container {
+padding-left: 20px;
+padding-right: 20px;
 }
 
+.row {
+	width: 100%;
+	max-width: 1140px;
+	margin: 0 auto;
+	/*overflow: hidden;*/
+}
+
+.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
+margin-right: 3.8%;
+float: left;
+}
+
+.onecol {
+width: 4.85%;
+}
+
+.twocol {
+width: 13.5%;
+}
+
+.threecol {
+width: 22.15%;
+}
+
+.fourcol {
+width: 30.8%;
+}
+
+.fivecol {
+width: 39.45%;
+}
+
+.sixcol {
+width: 48.1%;
+}
+
+.sevencol {
+width: 56.75%;
+}
+
+.eightcol {
+width: 65.4%;
+}
+
+.ninecol {
+width: 74.05%;
+}
+
+.tencol {
+width: 82.7%;
+}
+
+.elevencol {
+width: 91.35%;
+}
+
+.twelvecol {
+width: 100%;
+float: left;
+}
+
+.row > *:last-child,
+.last {
+margin-right: 0px;
+}
+
+img, object, embed {
+	max-width: 100%;
+}
+
+
+/* Make minor type adjustments for 1024 monitors */
+@media only screen and (max-width: 1023px){
+	html body {
+		font-size: 1.3em; /* Makes type a bit smaller at 1024 so layout doesn't look unbalanced */
+		line-height: 1.6em;	/* As above */
+	}
+}
+
+/* Resets grid for mobile */
+@media handheld, only screen and (max-width: 767px){
+	.row, .body, .container {
+		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+		
+	.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol, .twelvecol {
+		width: auto;
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+		
+	.row {
+		width: 100%;
+	}
+		
+		/* Type presets */
+		
+	html body {
+		font-size: 1.6em;
+		line-height: 1.7em;
+	}
+}
+
+/* @end */
