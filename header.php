@@ -35,7 +35,7 @@
 	
 	<header>
 		<section>
-			<div id="headwrap" class="wrap">
+			<div id="headwrap" class="row">
 			<hgroup>
 				<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a><span>blog</span></h1>
 				<h4><?php bloginfo( 'description' ); ?></h4>

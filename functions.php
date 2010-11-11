@@ -22,8 +22,9 @@ class Theme{
 	function __construct(){
 	
 		add_action( 'after_setup_theme',				array( &$this , 'theme_init' ) );
+		
 		//widget stuff
-		//add_action( 'init',											array( &$this , 'widget_sidebars' ) );
+		add_action( 'init',											array( &$this , 'widget_sidebars' ) );
 		//add_action( 'widgets_init',							array( &$this , 'widgets_init' ) );
 		
 		//add_action( 'pre_get_posts',						array( &$this , 'post_filters' ) );
@@ -38,7 +39,7 @@ class Theme{
 		add_filter( 'home_template' ,						array( &$this, 'force_paged' ) );
 		
 		add_action( 'wp_head',									array( &$this , 'wp_head' ) );
-		add_action( 'admin_head',									array( &$this , 'wp_head' ) );
+		add_action( 'admin_head',								array( &$this , 'wp_head' ) );
 		add_action( 'wp_footer',								array( &$this , 'wp_footer' ) );
 		add_action( 'wp_enqueue_scripts',				array( &$this , 'enqueue_scripts' ) );
 	}
@@ -195,8 +196,12 @@ class Theme{
 		
 		$sidebars = array(
 			array(
-				'name' => __( 'Primary Widget Area', $this->theme_name ),
-				'id' => 'primary-widget-area',
+				'name' => __( 'Top Widget Area', $this->theme_name ),
+				'id' => 'top-widget-area',
+			),
+			array(
+				'name' => __( 'Bottom Widget Area', $this->theme_name ),
+				'id' => 'bottom-widget-area',
 			),
 		);
 		
