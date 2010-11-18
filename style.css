@@ -948,6 +948,84 @@ Size specific alignment rules
 
 /* @end */
 
+/* @group Sidebar */
+
+#sidebar{
+	font: 14px/26px "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+li.widget-container{
+	padding: 15px;
+	margin-bottom: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #b8b8b8;
+	border-bottom-style: none;
+	border-right-color: #d5d5d5;
+	border-left-color: #cbcbcb;
+	background-color: #cdcdcd;
+	background: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, rgba(212,212,212,0)),
+	    color-stop(1, rgba(212,212,212,0.4))
+	);
+	background: -moz-linear-gradient(
+	    center bottom,
+	   	rgba(212,212,212,0) 0%,
+	    rgba(212,212,212,0.3) 100%
+	);
+	-webkit-box-shadow: inset 0px 0px 2px #cdcdcd;
+	-moz-box-shadow: inset 0px 0px 2px #cdcdcd;
+	box-shadow: inset 0px 0px 2px #cdcdcd;
+}
+
+li.widget-container h3.widget-title{
+	margin-bottom: 5px;
+	text-transform: ;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 18px;
+	line-height: 1.4em;
+	color: #294252;
+}
+li.widget-container{
+	list-style: none;
+}
+li.widget-container > ul{
+	list-style: none;
+}
+
+li.widget-container a{
+	color: #3283b7;
+}
+
+li.widget-container a:hover{
+	text-decoration: none;
+}
+
+li.widget-container > ul > li{
+	line-height: 1.3em;
+	margin: 0 -15px;
+	padding: 6px 10px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+li.widget-container > ul > li:last-child{
+	border: none;
+}
+
+li.widget-container #searchform .screen-reader-text{
+	display: none;
+}
+
+li.widget-container{
+	
+}
+/* @end */
+
 /* @group Basic WordPress Blog Styles */
 
 /* @group Images */
