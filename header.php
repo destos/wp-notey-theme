@@ -22,7 +22,7 @@
 	
 	<!-- <link rel="shortcut icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/favicon.ico" > -->
 	<!-- <link rel="apple-touch-icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/apple-touch-icon.png"> -->
-		
+	
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" >

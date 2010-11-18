@@ -130,12 +130,12 @@ html body{
 }
 
 body > header{
-	background: #2f2e34 url(img/header_grad_colors.png) repeat-x center 0;
+	background: #2f2e34 url(img/header_grad_colors.png) repeat-x center 19px;
 	overflow: hidden;
 	border-bottom: 1px solid rgba(255,255,255,0.8);
 }
 body > header > section{
-	height: 60px;
+	height: 90px;
 	display: block;
 	background: transparent url(img/header_border_colors.png) repeat-x center bottom;
 	padding: 0 20px;
@@ -144,6 +144,7 @@ body > header > section{
 body > header > section .row{
 	position: relative;
 	overflow: hidden;
+	padding-bottom: 5px;
 }
 
 #headwrap a.feed{
@@ -177,10 +178,8 @@ header nav{
 }
 
 header nav ul{
-	overflow: hidden;
-	padding-bottom: 5px;
+	margin-top: 30px;
 	position: relative;
-	left: 17.2%;
 }
 
 header nav li.menu-item{
@@ -192,7 +191,8 @@ header nav li.menu-item{
 header nav li.menu-item > a{
 	text-align: left;
 	display: block;
-	padding: 27px 12px 8px;
+	padding: 57px 12px 8px;
+	margin-top: -30px;
 	font-size: 13px;
 	font-weight: normal;
 	border-bottom-left-radius: 5px;
@@ -301,7 +301,7 @@ header nav li.current-menu-item:nth-child(4) > a{
 	    left top,
 	    color-stop(0.3, rgba(0,0,0,0)),
 	    color-stop(1, rgba(0,0,0,0.4))
-	),url(img/header_grad_colors.png) repeat-x 478px -20px;
+	),url(img/header_grad_colors.png) repeat-x 60% -20px;
 	background: -moz-linear-gradient(
 	    center bottom,
 		rgba(0,0,0,0) 40%,
@@ -309,6 +309,21 @@ header nav li.current-menu-item:nth-child(4) > a{
 	),url(img/header_grad_colors.png) repeat-x 478px -20px;
 }
 header nav li.current-menu-item:nth-child(5) > a{
+	background: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.3, rgba(0,0,0,0)),
+	    color-stop(1, rgba(0,0,0,0.4))
+	),url(img/header_grad_colors.png) repeat-x 76% -20px;
+	background: -moz-linear-gradient(
+	    center bottom,
+		rgba(0,0,0,0) 40%,
+	    rgba(0,0,0,0.3) 100%
+	),url(img/header_grad_colors.png) repeat-x 76% -20px;
+}
+
+header nav li.current-menu-item:nth-child(6) > a{
 	background: -webkit-gradient(
 	    linear,
 	    left bottom,
@@ -344,6 +359,7 @@ body > header hgroup{
 	position: absolute;
 	margin-top: 16px;
 	margin-left: 0px;
+	z-index: 400;
 }
 
 body > header hgroup h1 a{
@@ -667,6 +683,7 @@ article header h2{
 	font-size: 2.5em;
 	word-spacing: 1px;
 	letter-spacing: -1px;
+	line-height: 1em;
 }
 
 article header a,
@@ -1376,6 +1393,43 @@ img, object, embed {
 
 /* Resets grid for mobile */
 @media handheld, only screen and (max-width: 767px){
+	header hgroup{
+		margin-left: 11px !important;
+		margin-top: -40px !important;
+		position: static;
+	}
+	header nav ul{
+		margin-top: 58px;
+		position: relative;
+	}
+	body > header > section .row{
+		overflow: visible;
+	}
+	header nav li.menu-item > a{
+		display: block;
+		float: none;
+		font-size: 1.5em;
+		padding: 10px;
+		margin: 0;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		border-radius: 8px;
+		border-top: 1px solid rgba(0,0,0,0.18);
+	}
+	body > header{
+	background-position: 0 120%;
+}
+	body > header > section{
+		height: auto;
+	}
+	
+	header nav li.menu-item {
+		display: block;
+		float: none;
+		width: 100%;
+		margin-bottom: 10px;
+		
+	}
 	.row, .body, .container {
 		width: 100%;
 		margin-left: 0px;
