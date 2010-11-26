@@ -1,4 +1,4 @@
-/* @override http://pat.dev/wp/wp-content/themes/notey/style.css */
+/* @override http://wordpress.dev/wp/wp-content/themes/notey/style.css */
 
 /*   
 Theme Name: Notey
@@ -1535,5 +1535,32 @@ img, object, embed {
 		line-height: 1.7em;
 	}
 }
+
+/* @end */
+
+/* @group Post Formats */
+
+/* @group Quote Styling */
+
+article.format-quote section{
+	font-size: 2em;
+	line-height: 1.2em;
+}
+article.format-quote section p{
+	margin-bottom: 0.4em;
+}
+article.format-quote section p:first-child:before{
+	content: '“';
+}
+article.format-quote section p:last-child:after{
+	content: '”';
+}
+article.format-quote aside cite{
+	display: block;
+	text-align: right;
+	font-size: 1.4em;
+	line-height: 1em;
+}
+/* @end */
 
 /* @end */

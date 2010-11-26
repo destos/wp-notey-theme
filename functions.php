@@ -68,7 +68,9 @@ class Theme{
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'nav-menus' );
 		
-		add_editor_style( 'css/editor-style.css');
+		add_theme_support( 'post-formats', array( 'aside', 'gallery', 'audio', 'chat', 'image', 'link', 'quote', 'status', 'video' ) );
+		
+		//add_editor_style( 'css/editor-style.css');
 		
 		//
 		// Set thumbnail sizes
@@ -336,6 +338,40 @@ class tmpl{
 	// --------------------------------------------------------
 	// General Template
 	//
+	
+	// load templates for postypes and formats
+	static function get_post_type_template( $context = null ) {
+		
+		$type = (string) get_post_type( get_the_ID() );
+		$format = (string) get_post_format( get_the_ID() );
+		
+		do_action( "get_post_type_template_{$type}", $format, $context );
+	
+		$templates = array();
+		
+		if ( !empty($format) ){
+		
+			if(is_array($context)){
+				foreach($context as $con)
+				$templates[] = "type-{$type}-{$format}-{$con}.php";
+			}else{
+				$templates[] = "type-{$type}-{$format}-{$context}.php";
+			}
+		
+			$templates[] = "type-{$type}-{$format}.php";
+		}
+		
+		if(is_array($context)){
+			foreach($context as $con)
+			$templates[] = "type-{$type}-{$con}.php";
+		}else{
+			$templates[] = "type-{$type}-{$context}.php";
+		}
+		
+		$templates[] = "type-{$type}.php";
+		
+		locate_template( $templates, true, false );
+	}
 	
 	// nice title
 	static function title(){

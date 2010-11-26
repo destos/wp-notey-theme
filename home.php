@@ -5,13 +5,11 @@
 			<section id="content" class="container">
 				<div class="row">
 				
-					<div class="eightcol">
-					<?php// get_template_part( 'loop', 'index' );	?>
-					
+					<div class="eightcol">					
 					<?php
 					if(have_posts()){
 						the_post();
-						get_template_part( 'type-post', 'full' );
+						tmpl::get_post_type_template('full');
 					}?>
 					</div><!-- end .eightcol -->
 					
@@ -31,11 +29,10 @@
 					if(have_posts()){
 						while(have_posts()){
 							the_post();
-							get_template_part( 'type-post', 'excerpt' );
+							tmpl::get_post_type_template('excerpt');
 						}
 					}
 					
-					// TODO If we have more posts to show link to archive.
 					?>
 					<?php get_template_part('nav', 'bottom'); ?>
 					</section>
